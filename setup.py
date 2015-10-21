@@ -9,7 +9,7 @@ setup(
     name="rwlock",
     packages=find_packages(),
 
-    version="0.0.3",
+    version="0.0.4",
     author="kristjan.jonsson",
     maintainer="xwhuang",
     url="https://bugs.python.org/issue8800",

@@ -3,6 +3,7 @@
 from threading import Condition
 from thread import get_ident
 
+import time
 
 # The internal lock object managing the RWLock state.
 class _RWLockCore(object):
@@ -59,9 +60,9 @@ class _RWLockCore(object):
         while not result:
             if waittime is not None:
                 if endtime is None:
-                    endtime = _time() + waittime
+                    endtime = time.time() + waittime
                 else:
-                    waittime = endtime - _time()
+                    waittime = endtime - time.time()
                     if waittime <= 0:
                         break
             self.cond.wait(waittime)

@@ -1,12 +1,22 @@
 # Ref: https://bugs.python.org/issue8800
 
 import time
-from thread import start_new_thread, get_ident
+import threading
+try:
+    # python 2.7
+    from thread import get_ident
+except ImportError:
+    from threading import get_ident
 import unittest
 
 from rwlock import RWLock
 
-from test import test_support as support
+try:
+    # python 3
+    from test import support as support
+except ImportError:
+    # python 2.7
+    from test import test_support as support
 
 
 def _wait():
@@ -40,7 +50,7 @@ class Bunch(object):
                 while not self._can_exit:
                     _wait()
         for _ in range(n):
-            start_new_thread(task, ())
+            threading.Thread(target=task).start()
 
     def wait_for_started(self):
         while len(self.started) < self.n:

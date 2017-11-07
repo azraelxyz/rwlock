@@ -1,1 +1,1 @@
-from rwlock import RWLock
+from .rwlock import RWLock

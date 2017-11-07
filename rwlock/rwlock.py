@@ -1,9 +1,14 @@
 # Ref: https://bugs.python.org/issue8800
 
 from threading import Condition
-from thread import get_ident
+
+try:
+    from thread import get_ident
+except ImportError:
+    from threading import get_ident
 
 import time
+
 
 # The internal lock object managing the RWLock state.
 class _RWLockCore(object):

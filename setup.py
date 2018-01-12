@@ -18,5 +18,6 @@ setup(
                  "it is from "
                  "https://bugs.python.org/issue8800 and patched for py2.7"),
     long_description=read('README'),
+    license='Apache License 2.0',
     keywords=['rwlock', 'read-write lock', 'lock']
 )
